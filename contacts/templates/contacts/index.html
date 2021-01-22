@@ -6,6 +6,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Nome</th>
       <th>Sobrenome</th>
       <th>Telefone</th>
@@ -15,6 +16,7 @@
   <tbody>
     {% for contact in contacts %}
       <tr>
+        <td>{{ contact.id }}</td>
         <td>
           <a href="{% url 'profile' contact.id %}">{{ contact.name }}</a>
         </td>
@@ -25,5 +27,17 @@
     {% endfor %}
   </tbody>
 </table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% for page in contacts.paginator.page_range %}
+      {% if contacts.number == page %}
+         <li class="page-item active"><a href="?page={{ page }}" class="page-link">{{ page }}</a></li>
+      {% else %}
+         <li class="page-item"><a href="?page={{ page }}" class="page-link">{{ page }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
 
 {% endblock %}

@@ -16,6 +16,7 @@ class Contact(models.Model):
     email = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     description = models.TextField(blank=True)
+    show = models.BooleanField(default=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
 
     def __str__(self):
