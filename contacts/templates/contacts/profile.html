@@ -3,6 +3,13 @@
 {% block content %}
 
         <h1 class="mt-5">{{ contact.name }} {{ contact.surname }}</h1>
+        
+        {% if contact.image %}
+          <p>
+            <img src="{{ contact.image.url }}" style="max-width: 250px" alt="image">
+          </p>
+        {% endif %}
+
         <dl>
           <dt>ID</dt>
           <dd>{{ contact.id }}</dd>
